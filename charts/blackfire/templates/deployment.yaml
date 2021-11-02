@@ -2,26 +2,21 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: {{ include "blackfire.fullname" . }}
-  labels:
-    {{- include "blackfire.labels" . | nindent 4 }}
+  labels: {{- include "blackfire.labels" . | nindent 4 }}
 spec:
   replicas: {{ .Values.replicaCount }}
   selector:
-    matchLabels:
-      {{- include "blackfire.selectorLabels" . | nindent 6 }}
+    matchLabels: {{- include "blackfire.selectorLabels" . | nindent 6 }}
   template:
     metadata:
-      labels:
-        {{- include "blackfire.selectorLabels" . | nindent 8 }}
+      labels: {{- include "blackfire.selectorLabels" . | nindent 8 }}
     spec:
-    {{- with .Values.imagePullSecrets }}
-      imagePullSecrets:
-        {{- toYaml . | nindent 8 }}
-    {{- end }}
+      {{- with .Values.imagePullSecrets }}
+      imagePullSecrets: {{- toYaml . | nindent 8 }}
+      {{- end }}
       containers:
         - name: {{ .Chart.Name }}
-          securityContext:
-            {{- toYaml .Values.securityContext | nindent 12 }}
+          securityContext: {{- toYaml .Values.securityContext | nindent 12 }}
           image: "{{ .Values.image.repository }}:{{ .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           env:
@@ -33,7 +28,7 @@ spec:
                   key: server_id
               {{- else }}
               value: {{ .Values.blackfire.server_id }}
-              {{- end }}
+            {{- end }}
             - name: BLACKFIRE_SERVER_TOKEN
               {{- if .Values.blackfire.existingSecret }}
               valueFrom:
@@ -42,7 +37,7 @@ spec:
                   key: server_token
               {{- else }}
               value: {{ .Values.blackfire.server_token }}
-              {{- end }}
+            {{- end }}
             - name: BLACKFIRE_LOG_LEVEL
               value: {{ .Values.blackfire.log_level | default 1 | quote }}
           ports:
@@ -56,16 +51,13 @@ spec:
             tcpSocket:
               port: agent
           resources:
-            {{- toYaml .Values.resources | nindent 12 }}
+      {{- toYaml .Values.resources | nindent 12 }}
       {{- with .Values.nodeSelector }}
-      nodeSelector:
-        {{- toYaml . | nindent 8 }}
+      nodeSelector: {{- toYaml . | nindent 8 }}
       {{- end }}
-    {{- with .Values.affinity }}
-      affinity:
-        {{- toYaml . | nindent 8 }}
-    {{- end }}
-    {{- with .Values.tolerations }}
-      tolerations:
-        {{- toYaml . | nindent 8 }}
-    {{- end }}
+      {{- with .Values.affinity }}
+      affinity: {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.tolerations }}
+      tolerations: {{- toYaml . | nindent 8 }}
+  {{- end }}
