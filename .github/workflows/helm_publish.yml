@@ -1,4 +1,4 @@
-name: Helm Publish
+name: Release Charts
 
 on:
     push:
@@ -6,10 +6,25 @@ on:
             - master
 
 jobs:
-    build:
+    release:
         runs-on: ubuntu-latest
         steps:
-            -   uses: actions/checkout@v1
-            -   uses: J12934/helm-gh-pages-action@master
+            -   name: Checkout
+                uses: actions/checkout@v2
                 with:
-                    access-token: ${{ secrets.ACCESS_TOKEN }}
+                    fetch-depth: 0
+
+            -   name: Configure Git
+                run: |
+                    git config user.name "$GITHUB_ACTOR"
+                    git config user.email "$GITHUB_ACTOR@users.noreply.github.com"
+
+            -   name: Install Helm
+                uses: azure/setup-helm@v1
+                with:
+                    version: v3.4.0
+
+            -   name: Run chart-releaser
+                uses: helm/chart-releaser-action@v1.2.1
+                env:
+                    CR_TOKEN: "${{ secrets.ACCESS_TOKEN }}"
