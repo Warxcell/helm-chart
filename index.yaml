@@ -3,6 +3,18 @@ entries:
   blackfire:
   - apiVersion: v2
     appVersion: 2.0.0
+    created: "2021-11-02T13:35:00.897056564Z"
+    description: An unofficial Helm chart for Blackfire.io
+    digest: dc9dcc52ee71ca6e1bf99723611ff117a97d9fcf57dc337afccf5319ae318091
+    home: https://blackfire.io/
+    name: blackfire
+    sources:
+    - https://blackfire.io
+    urls:
+    - https://github.com/Warxcell/helm-chart/releases/download/blackfire-0.5.4/blackfire-0.5.4.tgz
+    version: 0.5.4
+  - apiVersion: v2
+    appVersion: 2.0.0
     created: "2021-11-02T12:42:15.308722027Z"
     description: An unofficial Helm chart for Blackfire.io
     digest: 2946cca155448f4b9802dadcb2bb27480a7a1c0f7e9f25498b0e647ccd68ae76
@@ -49,4 +61,4 @@ entries:
     urls:
     - https://github.com/Warxcell/helm-chart/releases/download/blackfire-0.5.0/blackfire-0.5.0.tgz
     version: 0.5.0
-generated: "2021-11-02T12:42:15.308737727Z"
+generated: "2021-11-02T13:35:00.897079165Z"
