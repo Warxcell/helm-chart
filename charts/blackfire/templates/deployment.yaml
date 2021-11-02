@@ -21,25 +21,25 @@ spec:
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           env:
             - name: BLACKFIRE_SERVER_ID
-              {{- if .Values.blackfire.existingSecret }}
+              {{- if .Values.existingSecret }}
               valueFrom:
                 secretKeyRef:
-                  name: {{ .Values.blackfire.existingSecret }}
+                  name: {{ .Values.existingSecret }}
                   key: server_id
               {{- else }}
-              value: {{ .Values.server_id }}
+              value: {{ required "server_id is required" .Values.serverId }}
             {{- end }}
             - name: BLACKFIRE_SERVER_TOKEN
-              {{- if .Values.blackfire.existingSecret }}
+              {{- if .Values.existingSecret }}
               valueFrom:
                 secretKeyRef:
-                  name: {{ .Values.blackfire.existingSecret }}
+                  name: {{ .Values.existingSecret }}
                   key: server_token
               {{- else }}
-              value: {{ .Values.server_token }}
+              value: {{ required "serverToken is required" .Values.serverToken }}
             {{- end }}
             - name: BLACKFIRE_LOG_LEVEL
-              value: {{ .Values.log_level | default 1 | quote }}
+              value: {{ .Values.logLevel | default 1 | quote }}
           ports:
             - name: agent
               containerPort: 8707
