@@ -42,7 +42,7 @@ spec:
               value: {{ .Values.logLevel | default 1 | quote }}
           ports:
             - name: agent
-              containerPort: 8707
+              containerPort: 8307
               protocol: TCP
           livenessProbe:
             tcpSocket:
