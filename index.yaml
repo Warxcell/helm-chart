@@ -73,4 +73,29 @@ entries:
     urls:
     - https://github.com/Warxcell/helm-chart/releases/download/blackfire-0.5.0/blackfire-0.5.0.tgz
     version: 0.5.0
-generated: "2021-11-02T13:43:09.642401036Z"
+  selenium:
+  - apiVersion: v2
+    appVersion: 4.0.0
+    created: "2021-11-02T16:32:10.627976075Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: Chart for selenium grid
+    digest: 4746b3ce11c1116d612edc30b9735a3dfc6b058836e4395172937c7c41e04049
+    home: https://www.seleniumhq.org/
+    icon: https://docs.seleniumhq.org/images/big-logo.png
+    keywords:
+    - qa
+    - selenium
+    - grid
+    - hub
+    name: selenium
+    sources:
+    - https://github.com/Warxcell/helm-chart
+    urls:
+    - https://github.com/Warxcell/helm-chart/releases/download/selenium-1.2.4/selenium-1.2.4.tgz
+    version: 1.2.4
+generated: "2021-11-02T16:32:10.628425678Z"
