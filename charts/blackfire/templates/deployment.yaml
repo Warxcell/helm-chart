@@ -27,7 +27,7 @@ spec:
                   name: {{ .Values.blackfire.existingSecret }}
                   key: server_id
               {{- else }}
-              value: {{ .Values.blackfire.server_id }}
+              value: {{ .Values.server_id }}
             {{- end }}
             - name: BLACKFIRE_SERVER_TOKEN
               {{- if .Values.blackfire.existingSecret }}
@@ -36,10 +36,10 @@ spec:
                   name: {{ .Values.blackfire.existingSecret }}
                   key: server_token
               {{- else }}
-              value: {{ .Values.blackfire.server_token }}
+              value: {{ .Values.server_token }}
             {{- end }}
             - name: BLACKFIRE_LOG_LEVEL
-              value: {{ .Values.blackfire.log_level | default 1 | quote }}
+              value: {{ .Values.log_level | default 1 | quote }}
           ports:
             - name: agent
               containerPort: 8707
