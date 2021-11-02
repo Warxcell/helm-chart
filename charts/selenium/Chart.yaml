@@ -10,7 +10,7 @@ keywords:
   - hub
 name: selenium
 sources:
-  - https://github.com/LogiGear/selenium3-chart
+  - https://github.com/Warxcell/helm-chart
 version: 1.2.4
 
 dependencies:
