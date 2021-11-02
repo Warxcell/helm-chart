@@ -21,23 +21,15 @@ spec:
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           env:
             - name: BLACKFIRE_SERVER_ID
-              {{- if .Values.existingSecret }}
               valueFrom:
                 secretKeyRef:
-                  name: {{ .Values.existingSecret }}
+                  name: {{ include "blackfire.secret" . | quote }}
                   key: server_id
-              {{- else }}
-              value: {{ required "serverId is required" .Values.serverId }}
-            {{- end }}
             - name: BLACKFIRE_SERVER_TOKEN
-              {{- if .Values.existingSecret }}
               valueFrom:
                 secretKeyRef:
-                  name: {{ .Values.existingSecret }}
+                  name: {{ include "blackfire.secret" . | quote }}
                   key: server_token
-              {{- else }}
-              value: {{ required "serverToken is required" .Values.serverToken }}
-            {{- end }}
             - name: BLACKFIRE_LOG_LEVEL
               value: {{ .Values.logLevel | default 1 | quote }}
           ports:
