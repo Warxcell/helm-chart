@@ -76,6 +76,30 @@ entries:
   selenium:
   - apiVersion: v2
     appVersion: 4.0.0
+    created: "2021-11-02T16:49:25.99270875Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: Chart for selenium grid
+    digest: e3bba042838278a74884f86facbe57ee7be1966dd8c63bc07e5d27f0ffb8b824
+    home: https://www.seleniumhq.org/
+    icon: https://docs.seleniumhq.org/images/big-logo.png
+    keywords:
+    - qa
+    - selenium
+    - grid
+    - hub
+    name: selenium
+    sources:
+    - https://github.com/warxcell/helm-chart
+    urls:
+    - https://github.com/Warxcell/helm-chart/releases/download/selenium-1.2.6/selenium-1.2.6.tgz
+    version: 1.2.6
+  - apiVersion: v2
+    appVersion: 4.0.0
     created: "2021-11-02T16:41:34.27597353Z"
     dependencies:
     - name: common
@@ -122,4 +146,4 @@ entries:
     urls:
     - https://github.com/Warxcell/helm-chart/releases/download/selenium-1.2.4/selenium-1.2.4.tgz
     version: 1.2.4
-generated: "2021-11-02T16:41:34.275996231Z"
+generated: "2021-11-02T16:49:25.992729651Z"
