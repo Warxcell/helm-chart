@@ -10,8 +10,8 @@ keywords:
   - hub
 name: selenium
 sources:
-  - https://github.com/Warxcell/helm-chart
-version: 1.2.4
+  - https://github.com/warxcell/helm-chart
+version: 1.2.5
 
 dependencies:
   - name: common
