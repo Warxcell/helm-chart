@@ -1,0 +1,21 @@
+apiVersion: v2
+appVersion: 4.0.0
+description: Chart for selenium grid
+home: https://www.seleniumhq.org/
+icon: https://docs.seleniumhq.org/images/big-logo.png
+keywords:
+  - qa
+  - selenium
+  - grid
+  - hub
+name: selenium
+sources:
+  - https://github.com/LogiGear/selenium3-chart
+version: 1.2.4
+
+dependencies:
+  - name: common
+    repository: https://charts.bitnami.com/bitnami
+    version: 1.x.x
+    tags:
+      - bitnami-common
