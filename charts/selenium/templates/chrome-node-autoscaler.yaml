@@ -12,6 +12,6 @@ spec:
   triggers:
     - type: selenium-grid
       metadata:
-        url: {{ printf "http://%s:%s/graphql" (include "selenium.hub.host" .) (include "selenium.hub.port" .) }}
+        url: {{ printf "http://%s.%s.svc.cluster.local:%s/graphql" (include "selenium.hub.host" .) .Release.Namespace (include "selenium.hub.port" .) }}
         browserName: 'chrome'
   {{- end }}
