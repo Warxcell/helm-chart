@@ -193,6 +193,7 @@ hub:
     enabled: true
     path: /
     host: selenium-hub.local
+    annotations: {}
     tls:
       enabled: false
       secretName: selenium-hub-tls
