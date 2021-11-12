@@ -1,4 +1,4 @@
-{{- if .Values.chromeNode.enabled }}
+{{- if and .Values.chromeNode.enabled .Values.chromeNode.autoscale.enabled }}
 apiVersion: keda.sh/v1alpha1
 kind: ScaledObject
 metadata:
@@ -6,7 +6,7 @@ metadata:
   labels:
   {{- include "selenium.commonLabels" . | nindent 4 }}
 spec:
-  maxReplicaCount: 4
+  maxReplicaCount: {{ .Values.chromeNode.autoscale.maxReplicas }}
   scaleTargetRef:
     name: {{ template "selenium.chromeNode.fullname" . }}
   triggers:
