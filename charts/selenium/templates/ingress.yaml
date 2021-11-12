@@ -11,7 +11,7 @@ metadata:
   {{- toYaml . | nindent 4 }}
   {{- end }}
   {{- with .Values.hub.ingress.annotations }}
-  annotations: {{ toYaml . | indent 4 }}
+  annotations: {{- toYaml . | indent 4 }}
   {{- end }}
 spec:
   {{- if .Values.hub.ingress.tls.enabled }}
