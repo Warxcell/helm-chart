@@ -1,0 +1,50 @@
+{{- if .Values.isolateComponents }}
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ template "selenium.sessionQueuer.fullname" . }}
+  namespace: {{ .Release.Namespace }}
+  labels: &session_queuer_labels
+    app: selenium-session-queuer
+    app.kubernetes.io/name: selenium-session-queuer
+    {{- include "selenium.commonLabels" . | nindent 4 }}
+    {{- with .Values.customLabels }}
+      {{- toYaml . | nindent 4 }}
+    {{- end }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: selenium-session-queuer
+  template:
+    metadata:
+      labels: *session_queuer_labels
+    {{- with .Values.components.sessionQueuer.annotations }}
+      annotations: {{- toYaml . | nindent 8 }}
+    {{- end }}
+    spec:
+      containers:
+        - name: selenium-session-queuer
+          {{- $imageTag := default .Values.global.selenium.imageTag .Values.components.sessionQueuer.imageTag }}
+          image: {{ printf "%s:%s" .Values.components.sessionQueuer.imageName $imageTag }}
+          imagePullPolicy: {{ .Values.components.sessionQueuer.imagePullPolicy }}
+        {{- with .Values.components.extraEnvironmentVariables }}
+          env: {{- tpl (toYaml .) $ | nindent 12 }}
+        {{- end }}
+          envFrom:
+            - configMapRef:
+                name: {{ .Values.busConfigMap.name }}
+          ports:
+            - containerPort: {{ .Values.components.sessionQueuer.port }}
+              protocol: TCP
+        {{- with .Values.components.sessionQueuer.resources }}
+          resources: {{- toYaml . | nindent 12 }}
+        {{- end }}
+    {{- with .Values.components.sessionQueuer.nodeSelector }}
+      nodeSelector: {{- toYaml . | nindent 8 }}
+    {{- end }}
+    {{- with .Values.components.sessionQueuer.tolerations }}
+      tolerations:
+        {{ toYaml . | nindent 6 }}
+    {{- end }}
+{{- end }}

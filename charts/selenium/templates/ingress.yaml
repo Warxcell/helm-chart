@@ -1,0 +1,35 @@
+{{- if .Values.hub.ingress.enabled -}}
+  {{- $fullName := include "selenium.hub.fullname" . -}}
+  {{- $ingressPath := .Values.hub.ingress.path -}}
+apiVersion: {{ include "common.capabilities.ingress.apiVersion" . }}
+kind: Ingress
+metadata:
+  name: {{ $fullName }}
+  labels:
+  {{- include "selenium.commonLabels" . | nindent 4 }}
+  {{- with .Values.customLabels }}
+  {{- toYaml . | nindent 4 }}
+  {{- end }}
+  {{- with .Values.hub.ingress.annotations }}
+  annotations:
+  {{ toYaml . | indent 4 }}
+  {{- end }}
+spec:
+  {{- if .Values.hub.ingress.tls.enabled }}
+  tls:
+    - hosts:
+        - {{ .Values.hub.ingress.host | quote }}
+      secretName: {{  .Values.hub.ingress.tls.secretName }}
+  {{- end }}
+  rules:
+    - host: {{ .Values.hub.ingress.host | quote }}
+      http:
+        paths:
+          - path: {{ .Values.hub.ingress.path | quote }}
+            pathType: Prefix
+            backend:
+              service:
+                name: {{ $fullName }}
+                port:
+                  name: http-hub
+  {{- end }}

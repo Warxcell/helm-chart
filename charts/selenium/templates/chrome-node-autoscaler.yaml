@@ -1,0 +1,17 @@
+{{- if .Values.chromeNode.enabled }}
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: {{ template "selenium.chromeNode.fullname" . }}
+  labels:
+  {{- include "selenium.commonLabels" . | nindent 4 }}
+spec:
+  maxReplicaCount: 4
+  scaleTargetRef:
+    name: {{ template "selenium.chromeNode.fullname" . }}
+  triggers:
+    - type: selenium-grid
+      metadata:
+        url: {{ printf "http://%s:%s/graphql" (include "selenium.hub.host" .) (include "selenium.hub.port" .) }}
+        browserName: 'chrome'
+  {{- end }}

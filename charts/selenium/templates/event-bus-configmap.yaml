@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Values.busConfigMap.name }}
+  namespace: {{ .Release.Namespace }}
+  {{- with .Values.busConfigMap.annotations }}
+  annotations: {{- toYaml . | nindent 4 }}
+  {{- end }}
+  labels:
+  {{- include "selenium.commonLabels" . | nindent 4 }}
+  {{ with .Values.customLabels }}
+  {{- toYaml . | nindent 4 }}
+  {{ end }}
+data:
+  SE_EVENT_BUS_HOST: {{ include "selenium.hub.host" . | quote }}
+  SE_EVENT_BUS_PUBLISH_PORT: {{ include "selenium.hub.publish_port" . | quote }}
+  SE_EVENT_BUS_SUBSCRIBE_PORT: {{ include "selenium.hub.subscribe_port" . | quote }}
