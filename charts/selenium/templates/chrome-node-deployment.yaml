@@ -28,6 +28,7 @@ spec:
     {{ toYaml . | nindent 8 }}
     {{- end }}
     spec:
+      terminationGracePeriodSeconds: 300
       containers:
         - name: selenium-chrome-node
           {{- $imageTag := default .Values.global.selenium.nodesImageTag .Values.chromeNode.imageTag }}
