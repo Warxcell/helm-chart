@@ -76,6 +76,22 @@ entries:
   selenium:
   - apiVersion: v2
     appVersion: 4.0.0
+    created: "2021-11-17T14:02:29.368199889Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: A Helm chart for creating a Selenium grid server in Kubernetes
+    digest: 6ec1b7fbbdb8cc3cc4809ca3ee9967fbee595b5fb6be6cb7079379b3952d824a
+    name: selenium
+    type: application
+    urls:
+    - https://github.com/Warxcell/helm-chart/releases/download/selenium-2.0.7/selenium-2.0.7.tgz
+    version: 2.0.7
+  - apiVersion: v2
+    appVersion: 4.0.0
     created: "2021-11-17T11:25:00.37085412Z"
     dependencies:
     - name: common
@@ -290,4 +306,4 @@ entries:
     urls:
     - https://github.com/Warxcell/helm-chart/releases/download/selenium-0.5.1/selenium-0.5.1.tgz
     version: 0.5.1
-generated: "2021-11-17T11:25:00.370982221Z"
+generated: "2021-11-17T14:02:29.36828629Z"
