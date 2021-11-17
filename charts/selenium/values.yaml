@@ -244,7 +244,10 @@ chromeNode:
   replicas: 1
   autoscale:
     enabled: false
+    minReplicas: 0
     maxReplicas: 2
+    pollingInterval: 30
+    cooldownPeriod: 300
   # Image of chrome nodes
   imageName: selenium/node-chrome
   # Image of chrome nodes (this overwrites global.selenium.nodesImageTag)

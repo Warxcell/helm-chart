@@ -6,7 +6,10 @@ metadata:
   labels:
   {{- include "selenium.commonLabels" . | nindent 4 }}
 spec:
+  minReplicaCount: {{ .Values.chromeNode.autoscale.minReplicas }}
   maxReplicaCount: {{ .Values.chromeNode.autoscale.maxReplicas }}
+  pollingInterval: {{ .Values.chromeNode.autoscale.pollingInterval }}
+  cooldownPeriod:  {{ .Values.chromeNode.autoscale.cooldownPeriod }}
   scaleTargetRef:
     name: {{ template "selenium.chromeNode.fullname" . }}
   triggers:
