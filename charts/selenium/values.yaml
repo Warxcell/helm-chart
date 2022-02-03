@@ -257,6 +257,7 @@ chromeNode:
   # Port list to enable on container
   ports:
     - 5553
+    - 5900
   # Selenium port (spec.ports[0].targetPort in kubernetes service)
   seleniumPort: 5900
   # Selenium port exposed in service (spec.ports[0].port in kubernetes service)
@@ -309,6 +310,7 @@ firefoxNode:
   # Port list to enable on container
   ports:
     - 5553
+    - 5900
   # Selenium port (spec.ports[0].targetPort in kubernetes service)
   seleniumPort: 5900
   # Selenium port exposed in service (spec.ports[0].port in kubernetes service)
@@ -360,6 +362,7 @@ edgeNode:
   imagePullPolicy: IfNotPresent
   ports:
     - 5553
+    - 5900
   # Selenium port (spec.ports[0].targetPort in kubernetes service)
   seleniumPort: 5900
   # Selenium port exposed in service (spec.ports[0].port in kubernetes service)
