@@ -3,6 +3,18 @@ entries:
   blackfire:
   - apiVersion: v2
     appVersion: 2.5.2
+    created: "2022-02-04T21:22:19.575124154Z"
+    description: An unofficial Helm chart for Blackfire.io
+    digest: d2572799dce8d5444112ec6caf835dc644a49a52847de62fb05ac74422974f06
+    home: https://blackfire.io/
+    name: blackfire
+    sources:
+    - https://blackfire.io
+    urls:
+    - https://github.com/Warxcell/helm-chart/releases/download/blackfire-0.5.7/blackfire-0.5.7.tgz
+    version: 0.5.7
+  - apiVersion: v2
+    appVersion: 2.5.2
     created: "2022-02-04T21:17:50.700629027Z"
     description: An unofficial Helm chart for Blackfire.io
     digest: 2379e5388c4b4403894984af9911280a750268d345aaf4e8827e880673c3534f
@@ -334,4 +346,4 @@ entries:
     urls:
     - https://github.com/Warxcell/helm-chart/releases/download/selenium-0.5.1/selenium-0.5.1.tgz
     version: 0.5.1
-generated: "2022-02-04T21:17:50.700838528Z"
+generated: "2022-02-04T21:22:19.575196655Z"
