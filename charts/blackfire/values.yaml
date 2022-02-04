@@ -6,7 +6,6 @@ replicaCount: 1
 
 image:
   repository: docker.io/blackfire/blackfire
-  tag: "2.0"
   pullPolicy: IfNotPresent
 
 imagePullSecrets: []
@@ -19,8 +18,6 @@ service:
 
 serverId: ~
 serverToken: ~
-clientId: ~
-clientToken: ~
 logLevel: 1
 # If you want to store your server_id and server_token in a Secret instead, set this value to the name of that Secret.
 # The server_id and server_token values above will be ignored if this value is set.
