@@ -20,6 +20,8 @@ spec:
           image: "{{ .Values.image.repository }}:{{ .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           env:
+            - name: BLACKFIRE_DISABLE_LEGACY_PORT
+              value: "true"
             - name: BLACKFIRE_SERVER_ID
               valueFrom:
                 secretKeyRef:
