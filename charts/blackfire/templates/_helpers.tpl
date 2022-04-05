@@ -63,9 +63,9 @@ Create the name of the service account to use
 {{- end -}}
 
 {{- define "blackfire.secret" -}}
-{{- if .Values.existingSecret }}
-{{- .Values.existingSecret -}}
-{{- else -}}
-{{- include "blackfire.fullname" . -}}
-{{- end -}}
+    {{- if .Values.existingSecret -}}
+        {{- .Values.existingSecret -}}
+    {{- else -}}
+        {{- include "blackfire.fullname" . -}}
+    {{- end -}}
 {{- end -}}

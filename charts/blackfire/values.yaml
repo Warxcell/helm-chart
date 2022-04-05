@@ -19,9 +19,10 @@ service:
 serverId: ~
 serverToken: ~
 logLevel: 1
+
 # If you want to store your server_id and server_token in a Secret instead, set this value to the name of that Secret.
 # The server_id and server_token values above will be ignored if this value is set.
-# Make sure the fields in your Secret are also called server_id and server_token, just like above.
+# Make sure the fields in your Secret are also called server_id and server_token.
 existingSecret: ""
 
 resources: {}
