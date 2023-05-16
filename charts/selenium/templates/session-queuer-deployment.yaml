@@ -33,7 +33,7 @@ spec:
         {{- end }}
           envFrom:
             - configMapRef:
-                name: {{ .Values.busConfigMap.name }}
+                name: {{ template "selenium.eventBus.fullname" . }}
           ports:
             - containerPort: {{ .Values.components.sessionQueuer.port }}
               protocol: TCP

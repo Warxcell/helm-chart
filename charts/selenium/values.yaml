@@ -10,8 +10,6 @@ isolateComponents: false
 
 # ConfigMap that contains SE_EVENT_BUS_HOST, SE_EVENT_BUS_PUBLISH_PORT and SE_EVENT_BUS_SUBSCRIBE_PORT variables
 busConfigMap:
-  # Name of the configmap
-  name: selenium-event-bus-config
   # Custom annotations for configmap
   annotations: {}
 

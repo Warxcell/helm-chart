@@ -38,7 +38,7 @@ spec:
         {{- end }}
           envFrom:
             - configMapRef:
-                name: {{ .Values.busConfigMap.name }}
+                name: {{ template "selenium.eventBus.fullname" . }}
         {{- if gt (len .Values.firefoxNode.ports) 0 }}
           ports:
           {{- range .Values.firefoxNode.ports }}

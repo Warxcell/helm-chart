@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: {{ .Values.busConfigMap.name }}
+  name: {{ template "selenium.eventBus.fullname" . }}
   namespace: {{ .Release.Namespace }}
   {{- with .Values.busConfigMap.annotations }}
   annotations: {{- toYaml . | nindent 4 }}
